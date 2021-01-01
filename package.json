@@ -27,13 +27,14 @@
     "bundle:prod": "webpack  --entry $npm_package_config_src/js/starter.js  -o $npm_package_config_dest --mode production",
     "precss": "node-sass --include-path $npm_package_config_paths --output-style $npm_package_config_style --source-map true --source-map-contents true --precision 6 $npm_package_config_src/scss -o $npm_package_config_dest/css",
     "css-prefix": "postcss --replace $npm_package_config_src/css/starter.css --use autoprefixer --map",
+    "css-lint": "stylelint $npm_package_config_src/scss/ --cache --cache-location node_modules/.cache/.stylelintcache",
     "css": "npm run css-prefix",
     "precss-prod": "rm -rf $npm_package_config_dest/ && node-sass --include-path $npm_package_config_paths --output-style compressed --source-map true --source-map-contents true --precision 6 $npm_package_config_src/scss -o $npm_package_config_src/css",
     "css-prod": "npm run css",
     "postcss-prod": "purgecss --css $npm_package_config_src/css/starter.css --content index.html --output $npm_package_config_dest/css/",
     "server": "serve --listen $npm_package_config_port",
     "clear": "rm -rf node_modules/ && npm i",
-    "test": "npm run css"
+    "test:css": "npm run css && css-lint"
   },
   "keywords": [
     "bootstrap",
@@ -46,8 +47,10 @@
   "author": "mdo",
   "license": "MIT",
   "dependencies": {
+    "@popperjs/core": "^2.6.0",
     "bootstrap": "^5.0.0-beta1",
-    "@popperjs/core": "^2.6.0"
+    "stylelint": "^13.8.0",
+    "stylelint-config-twbs-bootstrap": "^2.1.0"
   },
   "devDependencies": {
     "@webpack-cli/serve": "^1.2.1",
