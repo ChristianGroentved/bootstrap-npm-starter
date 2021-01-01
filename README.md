@@ -12,20 +12,27 @@
 
 [![Build Status](https://github.com/twbs/bootstrap-npm-starter/workflows/CI/badge.svg)](https://github.com/twbs/bootstrap-npm-starter/actions)
 
+## What's included
+
+- Single HTML page (`index.html`) to demonstrate how to include Bootstrap.
+- Includes Bootstrap (currently using v5beta1) source files via npm.
+- npm scripts (see `package.json`) for compiling and autoprefixing Sass, watching for changes, and starting a basic local server.
+- Example stylesheet (`scss/starter.scss`) highlighting two ways to include and customize Bootstrap.
+- Example JavaScript file (`assets/js/starter.js`) showing how to import all of Bootstrap, or just the parts you need.
+- Other "goodies" to put CRA to shame 😉 with transparent tooling configuration and documentation.
+
 ## Repo template
 
 Setup as a starter template, you can easily generate a new GitHub repository. From the repository homepage, click the `Use this template` button.
 
-## What's included
+# Using a Browser IDE with Gitpod
+1. If you don't have a github, gitlab or bitbucket account, sign up for one.
+2. Install the [gitpod extension](https://chrome.google.com/webstore/detail/gitpod-dev-environments-i/dodmmooeoklaejobgleioelladacbeki?hl=en)
+3. Click the gitpod button
+4. Test the template in the browser
 
-- Single HTML page (`index.html`) to demonstrate how to include Bootstrap.
-- Includes Bootstrap (currently using v4.5.0) source files via npm.
-- npm scripts (see `package.json`) for compiling and autoprefixing Sass, watching for changes, and starting a basic local server.
-- Example stylesheet (`scss/starter.scss`) highlighting two ways to include and customize Bootstrap.
-- Example JavaScript file (`assets/js/starter.js`) showing how to import all of Bootstrap, or just the parts you need.
 
 ## Usage
-
 Be sure to have [Node.js](https://nodejs.org/) installed before proceeding.
 
 ```shell
@@ -56,9 +63,11 @@ The following npm scripts are available to you in this starter repo. With the ex
 
 | Script | Description |
 | --- | --- |
+| `start` | Puts together the development process, live reloads, watches files and complies source files |
 | `server` | Starts a local server (<http://localhost:3000>) for development |
 | `watch` | Automatically recompiles CSS as it watches the `scss` directory for changes |
 | `css` | Runs `css-compile` and `css-prefix` |
+| `css-lint` | Runs [Stylelint](https://stylelint.io) against source Sass for code quality |
 | `css-compile` | Compiles source Sass into CSS |
 | `css-prefix` | Runs Autoprefixer on the compiled CSS |
 | `css-purge` | Runs PurgeCSS to remove CSS that is unused by `index.html` |
@@ -66,6 +75,29 @@ The following npm scripts are available to you in this starter repo. With the ex
 ## Advanced usage
 
 Take this starter repository to another level with some built-in addons that you can enable and customize.
+
+### CLI Resources
+1. [node-sass](https://github.com/sass/node-sass)
+2. [post-css](https://github.com/postcss/postcss-cli)
+3. [purgecss](https://purgecss.com/CLI.html)
+4. [babel](https://babeljs.io/docs/en/babel-cli)
+
+### Build Configuration
+The package.json has a config object that can be used to customize this template to your invididual needs.
+
+`src` & `dest` refers to the source files and destination files the index.html references. These "variables" are refernced in npm scripts as `$npm_package_config_src` & `$npm_package_config_dest` to prohibit hardcoding the directories in your npm tasks. 
+
+> This **should** allow you to adopt this template more easily into exist projects by simply updating you're existing package.json and installing the require dependencies.
+
+```json
+  "config": {
+    "src": "./assets",
+    "dest": "./assets/dist",
+    "paths": "node_modules",
+    "port": "3000",
+    "style": "compact"
+  },
+```
 
 ### Optimizing CSS
 
