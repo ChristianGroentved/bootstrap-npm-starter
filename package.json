@@ -55,7 +55,7 @@
   "devDependencies": {
     "@webpack-cli/serve": "^1.2.1",
     "autoprefixer": "^10.1.0",
-    "node-sass": "^5.0.0",
+    "node-sass": "^6.0.1",
     "nodemon": "^2.0.6",
     "postcss": "^8.2.2",
     "postcss-cli": "^8.3.1",
